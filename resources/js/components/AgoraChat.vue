@@ -18,7 +18,7 @@
               :key="user.id"
               @click="placeCall(user.id, user.name)"
             >
-              Call {{ user.name }}
+              Callhh {{ user.name }}
               <span class="badge badge-light">{{
                 getUserOnlineStatus(user.id)
               }}</span>

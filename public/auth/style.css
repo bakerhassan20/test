@@ -1,0 +1,255 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 80px;
+}
+
+
+.login-card {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 50px;
+    min-width: 480px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  .card-header1{
+    color: #7B6ADA;
+  }
+  .card-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .card-header h1 {
+    font-size: 2em;
+    color: #333;
+    text-shadow: 1px 1px #ddd;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+  .form-group2 {
+    margin-bottom: 50px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    padding-right: 25px;
+  }
+
+  .form-group label {
+    display: flex;
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 10px;
+
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f0f0f0;
+    font-size: 1.2em;
+    color: #555;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+
+    margin-top: 3px;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.3);
+    outline: none;
+  }
+
+  input[type="submit"] {
+    background-color: #00ab9f;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 50px;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #00ab9f;
+  }
+
+  .login-button {
+    background-color: #00ab9f;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 10px;
+    width: 80%;
+    transition: background-color 0.3s ease;
+    transition: 0.25s;
+    margin-top: 30px;
+  }
+
+  .login-button:hover {
+    background-color: #00ab9f;
+    -webkit-box-shadow: 0px 0px 30px 0px #05d3c5;
+    -moz-box-shadow: 0px 0px 30px 0px #05d3c5;
+    box-shadow: 0px 0px 30px 0px #05d3c5;
+  }
+  .login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+  }
+  .signup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+  }
+  .form-sign-up{
+   color: #00ab9f;
+  }
+
+  .username-mail{
+    display: flex;
+
+  }
+
+
+
+
+
+#ifrm{
+    width: 95%;
+    height: 85%;
+    margin-top: 10px;
+  }
+
+  .iframe{
+      padding-top: 4%;
+      padding-left: 5%;
+      width: 100%;
+  }
+
+
+
+
+
+
+
+
+
+  .doctor-message {
+    background-image: url(../images/slider/slider-3.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .doctor-message .inner-lay {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+    padding-bottom: 0px;
+    color: #FFF;
+
+  }
+
+
+  @media (min-width: 1200px){
+  .container {
+    max-width: 1140px;
+  }
+  }
+
+
+  .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .doctor-message .doc-img {
+    text-align: center;
+  }
+
+
+  @media (min-width: 768px){
+  .col-md-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  }
+
+  .doctor-message .doc-img img {
+    width: 400px;
+    margin-top: -140px;
+  }
+
+  img {
+    max-width: 100%;
+    vertical-align: middle;
+    border-style: none
+  }
+
+  @media (min-width: 768px)
+  {
+  .col-md-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  }
+
+  .doctor-message .doc-det h2 {
+    font-size: 42px;
+    margin-bottom: 0px;
+    color: black;
+  }
+
+  .doctor-message .doc-det span {
+    font-weight: 600;
+    margin-top: -5px;
+    color: black;
+  }
+
+
+  .doctor-message .doc-det p {
+    margin-top: 30px;
+    font-size: 18px;
+    text-indent: 20px;
+    color: black;
+  }
+
+
+  .doctor-message .doc-det h4 {
+    margin-top: 30px;
+    color: black;
+  }
+  .input-btn{
+    margin-top: 9px;
+
+  }

@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -54,8 +52,41 @@ Route::group(['middleware' => ['auth']], function () {
  * and uncomment
  *   Auth::routes()
  * so that you can register new users. I disabled the registration endpoint so that my hosted demo won't be abused.
- * 
+ *
  */
 // Auth::routes();
-Auth::routes(['register' => false]);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/', function () {
+    return view('website.home');
+})->middleware('guest')->name('website.home');
+
+Route::prefix('/admin')->middleware(['auth', 'user-access:admin'])->group(function () {
+
+    Route::get('/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    Route::resource('doctors','App\Http\Controllers\Admin\DoctorsController');
+
+});
+
+Route::prefix('/doctor')->middleware(['auth', 'user-access:doctor'])->group(function () {
+
+    Route::get('/home', [HomeController::class, 'doctorHome'])->name('doctor.home');
+
+
+});
+
+Route::middleware(['auth', 'user-access:patient'])->group(function () {
+
+    Route::get('/home', [HomeController::class, 'patientHome'])->name('patient.home');
+
+
+});
+
+
+Route::get('/doctors','App\Http\Controllers\Website\DoctorController@index')->name('patient.doctor');
+
+Route::get('/Course','App\Http\Controllers\Website\DoctorController@getCour')->name('patient.course');
+
+Route::get('/{page}', 'AdminController@index');

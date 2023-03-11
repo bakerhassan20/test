@@ -13,20 +13,30 @@ class RedirectIfAuthenticated
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @param  string|null  ...$guards
-     * @return mixed
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+           /*  if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
-            }
-        }
+            } */
+                if (Auth::guard($guard)->check() && auth()->user()->type == 'admin'){
+                    return redirect()->route('admin.home');
+                }
+                if (Auth::guard($guard)->check() && auth()->user()->type == 'doctor'){
+                    return redirect()->route('doctor.home');
+                }
+                if (Auth::guard($guard)->check() && auth()->user()->type == 'patient'){
+                    return redirect()->route('patient.home');
+                }
 
-        return $next($request);
-    }
+            }
+
+            return $next($request);
+        }
 }

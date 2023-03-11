@@ -1,24 +1,47 @@
+
+
 <template>
   <div>
     <div class="container">
       <div class="row">
-        <div class="col">
-          <div class="btn-group" role="group">
+<!--         <div class="col"> -->
+  <!--         <div class="btn-group" role="group"> -->
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 "
+
+        v-for="user in allusers"
+              :key="user.id"
+        >
+    <div class="card">
+     <img class="imgdoc" src="assets/img/doctor/1.jpg">
+      <span>{{ user.name }}</span>
+      <p class="info">{{ user.doc }}</p>
+    <!--   <div class="rating">
+        <i id = "star-icon" class="fa-solid fa-star"></i>
+        <i id = "star-icon" class="fa-solid fa-star"></i>
+        <i id = "star-icon" class="fa-solid fa-star"></i>
+        <i class="fa-sharp fa-regular fa-star"></i>
+        <i class="fa-sharp fa-regular fa-star"></i>
+    </div> -->
+    <span class="badge badge-light">{{
+                getUserOnlineStatus(user.id)}}</span>
+                     <div class="row">
+      <div class="col-3">
             <button
               type="button"
-              class="btn btn-primary mr-2"
-              v-for="user in allusers"
-              :key="user.id"
-              @click="placeVideoCall(user.id, user.name)"
-            >
-              Call {{ user.name }}
-              <span class="badge badge-light">{{
-                getUserOnlineStatus(user.id)
-              }}</span>
+              class="call-btn"
+              @click="placeVideoCall(user.id, user.name)">
+              Call
             </button>
+        </div>
+      <div class="col">
+            <button class="call-btn2">View Profile</button>
+        </div>
           </div>
         </div>
-      </div>
+          </div>
+     <!--    </div> -->
+    <!--   </div> -->
+    </div>
       <!--Placing Video Call-->
       <div class="row mt-5" id="video-row">
         <div class="col-12 video-container" v-if="callPlaced">
@@ -469,4 +492,136 @@ export default {
     height: 50vh;
   }
 }
+
+
+
+.card {
+  display: flex;
+    width: 17em;
+    /* height: 22.5em; */
+    background: #fff;
+    transition: 1s ease-in-out;
+    border-radius: 20px;
+    border-radius: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: auto;
+    margin-bottom: 0.5em;
+    padding: 1em;
+}
+
+.card span {
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  display: block;
+  padding-top: 1em;
+  font-size: 1em;
+}
+
+.card .info {
+  font-weight: 400;
+  color: black;
+  display: block;
+  text-align: center;
+  padding-top: 0.1em;
+  font-size: 0.72em;
+  margin: 1em;
+  margin-top: 1em;
+}
+
+.card .img {
+  width: 4.8em;
+  height: 4.8em;
+  background: black;
+  border-radius: 15px;
+  margin: auto;
+
+}
+
+.card .share {
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.card a {
+  color: black;
+  text-decoration: none;
+  transition: .4s ease-in-out;
+}
+
+.card a:hover {
+  color: rgb(36, 116, 221);
+}
+.call-btn{
+  background: rgb(19 163 28);
+  padding: 0.8em 1.7em;
+  display: block;
+  margin: auto;
+  border-radius: 25px;
+  border: none;
+
+  font-weight: bold;
+
+  color: rgb(255, 255, 255);
+  transition: .4s ease-in-out;
+  margin-bottom: 1em;
+}
+.call-btn:hover{
+  background: rgb(171, 171, 171);
+  color:rgb(36, 116, 221);;
+}
+
+.veiw-btn {
+  padding: 0.8em 1.7em;
+  display: block;
+  margin: auto;
+  border-radius: 25px;
+  border: none;
+
+  font-weight: bold;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  transition: .4s ease-in-out;
+  margin-bottom: 1em;
+}
+
+.btns{
+  display: flex;
+
+}
+
+.badge{
+    margin-bottom: 10px;
+}
+.call-btn2{
+    background: rgb(206, 219, 207);
+
+  padding: 0.8em 1.7em;
+  display: block;
+  margin: auto;
+  border-radius: 25px;
+  border: none;
+
+  font-weight: bold;
+
+  color: rgb(255, 255, 255);
+  transition: .4s ease-in-out;
+  margin-bottom: 1em;
+
+}
+
+
+
+.rating{
+  padding-bottom: 1em;
+}
+
+.imgdoc{
+width:70px;
+height:50px
+}
+
 </style>

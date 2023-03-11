@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts2.app')
 
 @section('scripts')
     <meta name="description" content="Build A Scalable Video Chat Application With Agora" />

@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -16,53 +15,37 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'about',
-        'last_login_at',
-        'last_login_ip',
-        'avatar_path'
+        'active',
+        'type',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
         'remember_token',
-        'last_login_ip',
-        'avatar_path'
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'last_login_at' => 'datetime'
     ];
 
-    protected $appends = [
-        'avatar_url',
-    ];
-
-
-    public function getAvatarUrlAttribute()
+    public function doctors()
     {
-
-        $exists = Storage::disk('s3')->exists($this->avatar_path);
-
-        if ($exists) {
-            return  Storage::disk('s3')->url($this->avatar_path);
-        }
-        return null;
+        return $this->belongsTo(Doctor::class,'user_id');
     }
 }
